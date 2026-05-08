@@ -11,14 +11,9 @@ export const Hero = () => {
             <p className="text-[11px] font-medium tracking-[0.13em] text-(--storia-black75)">
               FOR PEOPLE AND TEAMS WHO DO THEIR BEST WORK ON PURPOSE
             </p>
-            <h1 className="mt-6 max-w-[840px] text-[clamp(2.45rem,4vw,3.6rem)] leading-[1.05] font-medium lg:whitespace-nowrap">
-              You can&apos;t outrun your
-              <br />
-              mind. But you can{" "}
-              <em className="italic text-(--storia-blue)">
-                learn <br />
-                its rhythm
-              </em>{" "}
+            <h1 className="mt-6 max-w-[840px] text-[clamp(2.45rem,4vw,3.6rem)] leading-[1.05] font-medium">
+              You can't outrun your mind. But you can{" "}
+              <em className="italic text-(--storia-blue)">learn its rhythm</em>{" "}
               at work
             </h1>
             <p className="mt-8 max-w-[720px] text-[18px] leading-[1.55] text-(--storia-black75)">

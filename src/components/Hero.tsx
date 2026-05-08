@@ -5,7 +5,7 @@ import { ButtonComponent } from "~/components/ButtonComponent";
 export const Hero = () => {
   return (
     <section className="hero-texture relative bg-(--storia-coffee-light)">
-      <div className="mx-auto max-w-[1240px] px-6 py-20 md:px-[60px] md:py-28">
+      <div className="mx-auto max-w-[1240px] px-6 py-20 md:px-[60px] md:py-20">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr]">
           <div>
             <p className="text-[11px] font-medium tracking-[0.13em] text-(--storia-black75)">

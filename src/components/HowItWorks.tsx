@@ -1,90 +1,123 @@
-import * as React from "react";
+import { useEffect, useRef, useState } from "react";
+import reflectImg from "../../assets/reflect.png";
+import patternsImg from "../../assets/patterns.png";
+import clarityImg from "../../assets/clarity.png";
 
 const steps = [
   {
     n: "01",
-    title: "Reflect in minutes",
-    body: "Short guided prompts turn mental noise into signal. No blank page. No overthinking where to start.",
+    title: "Reflect with ease",
+    body: "Drop in what happened today. Storia uses guided prompts so you never stare at a blank page and wonder where to begin.",
+    image: reflectImg,
   },
   {
     n: "02",
-    title: "Spot patterns early",
-    body: "Storia identifies recurring themes across entries, so individuals and teams can see what is helping, what is draining energy, and what keeps repeating.",
+    title: "See your patterns",
+    body: "Storia identifies emotional and behavioral patterns across your entries so you can understand what's shaping your days.",
+    image: patternsImg,
   },
   {
     n: "03",
-    title: "Act with intention",
-    body: "Use the insight to adjust habits, priorities, and communication before small issues become bigger performance and wellbeing costs.",
+    title: "Move forward with clarity",
+    body: "Get grounded reflections and practical nudges that help you trust yourself, make better decisions, and stay consistent.",
+    image: clarityImg,
   },
 ];
 
+/** Pause after each card finishes entering before the next one starts. */
+const STEP_GAP_MS = 320;
+
 export const HowItWorks = () => {
-  const sectionRef = React.useRef<HTMLElement | null>(null);
-  const [showSteps, setShowSteps] = React.useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+  /** 0 = none visible; 1–3 = that many cards visible (left to right). */
+  const [visibleCount, setVisibleCount] = useState(0);
+  const sequenceStartedRef = useRef(false);
+  const timersRef = useRef<number[]>([]);
 
-  React.useEffect(() => {
-    const node = sectionRef.current;
-    if (!node) return;
+  useEffect(() => {
+    const clearTimers = () => {
+      for (const id of timersRef.current) {
+        window.clearTimeout(id);
+      }
+      timersRef.current = [];
+    };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowSteps(true);
-          observer.disconnect();
-        }
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduceMotion.matches) {
+      setVisibleCount(3);
+      sequenceStartedRef.current = true;
+      return;
+    }
+
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const hit = entries.some((e) => e.isIntersecting);
+        if (!hit || sequenceStartedRef.current) return;
+        sequenceStartedRef.current = true;
+        obs.disconnect();
+
+        setVisibleCount(1);
+        timersRef.current = [
+          window.setTimeout(() => setVisibleCount(2), STEP_GAP_MS),
+          window.setTimeout(() => setVisibleCount(3), STEP_GAP_MS * 2),
+        ];
       },
-      { threshold: 0.3 },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
     );
 
-    observer.observe(node);
-    return () => observer.disconnect();
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      clearTimers();
+    };
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      id="how-it-works"
-      className="px-6 py-24 md:px-[60px] md:py-32"
-      style={{ borderTop: "1px solid var(--ink-15)" }}
-    >
-      <div className="mx-auto w-full max-w-[1100px]">
-        <p className="eyebrow">How it works</p>
-        <h2
-          className="mt-6 max-w-[720px] text-[32px] leading-[1.1] sm:text-[40px] md:text-[46px]"
-          style={{ fontWeight: 500, letterSpacing: "-0.015em" }}
-        >
-          A simple rhythm for better workdays.
-        </h2>
-        <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-10">
-          {steps.map((s, index) => (
-            <div
-              key={s.n}
-              style={{
-                opacity: showSteps ? 1 : 0,
-                transform: showSteps ? "translateY(0)" : "translateY(20px)",
-                transition: `opacity 520ms ease-out ${index * 500}ms, transform 520ms ease-out ${index * 500}ms`,
-              }}
-            >
-              <div
-                className="font-display text-[64px] leading-none md:text-[72px]"
-                style={{
-                  fontFamily: "Fraunces, serif",
-                  color: "var(--storia-black50)",
-                  fontWeight: 500,
-                }}
-              >
-                {s.n}
-              </div>
-              <div
-                className="mt-5 h-[2px] w-10"
-                style={{ backgroundColor: "var(--storia-black15)" }}
-              />
-              <p className="mt-5 text-[20px] font-medium">{s.title}</p>
-              <p className="mt-3 text-[16px] leading-[1.6] text-(--storia-black75)">
-                {s.body}
-              </p>
-            </div>
-          ))}
+    <section ref={sectionRef} id="how-it-works" className="section-shell">
+      <div className="section-inner">
+        <div className="mb-4 flex justify-center md:mb-6">
+          <p className="section-pill">How it works</p>
+        </div>
+        <p className="mx-auto max-w-[600px] text-center text-[17px] leading-[1.65] text-(--storia-black75)">
+          A daily intelligence system that learns how they think, surfaces their
+          patterns, and helps them make better decisions over time.
+        </p>
+
+        <div className="mt-4 md:mt-8">
+          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+            {steps.map((step, index) => {
+              const shown = visibleCount > index;
+              return (
+                <article
+                  key={step.n}
+                  className={`min-w-0 px-6 py-8 text-center motion-reduce:transition-none lg:px-8 ${
+                    shown
+                      ? "translate-y-0 opacity-100"
+                      : "pointer-events-none translate-y-3 opacity-0"
+                  } transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]`}
+                >
+                  <div className="mx-auto mb-5 flex h-32 items-center justify-center">
+                    <img
+                      src={step.image}
+                      alt=""
+                      className="max-h-full w-auto max-w-[min(100%,12rem)] object-contain"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="mb-4 text-[20px] font-bold text-(--storia-black)">
+                    {step.title}
+                  </h3>
+                  <p className="text-[15px] leading-[1.65] text-(--storia-black75)">
+                    {step.body}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

@@ -16,15 +16,33 @@
   --storia-coffee-light: rgb(235, 228, 218, 0.5);
   --storia-black: #212529;
   --storia-white: #ffffff;
+  --storia-white75: rgba(255, 255, 255, 0.75);
+  --storia-white50: rgba(255, 255, 255, 0.5);
+  --storia-white40: rgba(255, 255, 255, 0.4);
+  --storia-white15: rgba(255, 255, 255, 0.15);
   --storia-blue: #a7c9e8;
+  --storia-blue75: rgba(167, 201, 232, 0.75);
+  --storia-blue50: rgba(167, 201, 232, 0.5);
+  --storia-darkgreen: #274a3a;
   --storia-green: #6ca98b;
+  --storia-green75: rgba(108, 169, 139, 0.75);
+  --storia-green50: rgba(108, 169, 139, 0.5);
   --storia-orange: #f38e6f;
+  --storia-orange75: rgba(243, 142, 111, 0.75);
+  --storia-orange50: rgba(243, 142, 111, 0.5);
   --storia-pink: #f6bac6;
+  --storia-pink75: rgba(246, 186, 198, 0.75);
+  --storia-pink50: rgba(246, 186, 198, 0.5);
   --storia-yellow: #fde293;
+  --storia-yellow75: rgba(253, 226, 147, 0.75);
+  --storia-yellow50: rgba(253, 226, 147, 0.5);
   --storia-black75: rgba(33, 37, 41, 0.75);
   --storia-black50: rgba(33, 37, 41, 0.5);
   --storia-black40: rgba(33, 37, 41, 0.4);
   --storia-black15: rgba(33, 37, 41, 0.15);
+
+  /* Sticky header row (py-4 + logo / button) — keep in sync with SiteHeader */
+  --site-header-height: 4.5rem;
 }
 
 @layer base {
@@ -95,3 +113,137 @@
   font-size: 11px;
   font-weight: 500;
 }
+
+.eyebrow--accent {
+  color: var(--storia-green);
+}
+
+/**
+ * Same rhythm as `.eyebrow`, for nested labels (e.g. pricing card "OPTION 1").
+ */
+.eyebrow-muted {
+  font-family: "DM Sans", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--storia-black50);
+}
+
+.eyebrow-muted--inverse {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/** Green pill label — shared by section intros (Problem, How it works, Origin, Pricing, Contact, etc.). */
+.section-pill {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: var(--storia-green75);
+  padding: 0.25rem 0.75rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.section-shell {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 2rem;
+  padding-block: 4rem;
+}
+
+.section-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding-inline: 5rem;
+    padding-block: 5rem;
+  }
+}
+
+/* Contact CTA: react-phone-number-input aligned with text fields */
+.contact-phone-input {
+  --PhoneInput-color--focus: var(--storia-green);
+  --PhoneInputCountryFlag-borderColor--focus: var(--storia-green);
+  --PhoneInputCountrySelectArrow-color--focus: var(--storia-green);
+}
+
+.contact-phone-input .PhoneInput {
+  width: 100%;
+  min-height: 2.75rem;
+  box-sizing: border-box;
+  gap: 0.35rem;
+  border: 1px solid var(--storia-black15);
+  border-radius: 0.5rem;
+  background-color: var(--storia-white);
+  padding: 0.15rem 0.55rem 0.15rem 0.4rem;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.contact-phone-input .PhoneInput:focus-within {
+  border-color: var(--storia-green);
+  box-shadow: 0 0 0 3px var(--storia-green50);
+}
+
+.contact-phone-input--invalid .PhoneInput {
+  border-color: var(--storia-orange);
+  box-shadow: none;
+}
+
+.contact-phone-input .PhoneInputInput {
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  color: var(--storia-black);
+  border: 0;
+  outline: none;
+  background: transparent;
+  padding: 0.4rem 0.3rem;
+  min-width: 0;
+}
+
+.contact-phone-input .PhoneInputCountry {
+  margin-right: 0.2rem;
+}
+
+/* .section-shell {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - var(--site-header-height));
+  min-height: calc(100dvh - var(--site-header-height));
+  padding-inline: 1.5rem;
+  padding-block: clamp(1rem, 4vw, 2rem);
+}
+
+.section-inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .section-shell {
+    padding-inline: 60px;
+    padding-block: clamp(1rem, 3vw, 2.5rem);
+  }
+} */

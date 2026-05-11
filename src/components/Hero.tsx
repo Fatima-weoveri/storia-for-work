@@ -4,17 +4,19 @@ import { ButtonComponent } from "~/components/ButtonComponent";
 
 export const Hero = () => {
   return (
-    <section className="hero-texture relative bg-(--storia-coffee-light)">
-      <div className="mx-auto max-w-[1240px] px-6 py-20 md:px-[60px] md:py-20">
+    <section className="section-shell bg-(--storia-coffee-light) min-h-[calc(100vh-var(--site-header-height))]">
+      <div
+        className="hero-texture pointer-events-none absolute inset-0 z-0"
+        aria-hidden
+      />
+      <div className="section-inner">
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_1fr]">
           <div>
-            <p className="text-[11px] font-medium tracking-[0.13em] text-(--storia-black75)">
-              FOR PEOPLE AND TEAMS WHO DO THEIR BEST WORK ON PURPOSE
-            </p>
             <h1 className="mt-6 max-w-[840px] text-[clamp(2.45rem,4vw,3.6rem)] leading-[1.05] font-medium">
-              You can't outrun your mind. But you can{" "}
-              <em className="italic text-(--storia-blue)">learn its rhythm</em>{" "}
-              at work
+              Supported people.
+            </h1>
+            <h1 className="mt-6 max-w-[840px] text-[clamp(2.45rem,4vw,3.6rem)] leading-[1.05] font-medium text-(--storia-green)">
+              Better business.
             </h1>
             <p className="mt-8 max-w-[720px] text-[18px] leading-[1.55] text-(--storia-black75)">
               Storia for Work helps professionals and teams reflect clearly,

@@ -1,12 +1,15 @@
 import { MessageCircle } from "lucide-react";
+import storiaLogo from "../../assets/icon.png";
 import { ButtonComponent } from "~/components/ButtonComponent";
 
 export const SiteHeader = () => {
   return (
-    <header className="sticky top-0 z-50 border-b border-(--storia-black15) bg-(--storia-beige)/95 backdrop-blur-[2px]">
+    <header
+      className="sticky top-0 z-50 box-border min-h-(--site-header-height) border-b border-(--storia-black15) bg-(--storia-beige)/95 backdrop-blur-[2px]"
+    >
       <div className="mx-auto flex w-full max-w-[1240px] items-center justify-between px-6 py-4 md:px-[60px]">
-        <a href="/" className="text-[15px] leading-none tracking-[0.01em]">
-          <span className="font-medium">Storia</span>
+        <a href="/" className="inline-flex items-center leading-none">
+          <img src={storiaLogo} alt="Storia" className="h-4 w-auto md:h-5" />
         </a>
         <nav className="hidden items-center gap-8 text-[13px] text-(--storia-black75) md:flex">
           <a href="#how-it-works">How it works</a>

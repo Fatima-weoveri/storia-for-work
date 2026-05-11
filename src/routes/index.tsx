@@ -1,11 +1,17 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { CallOut } from "~/components/CallOut";
+import { Achievements } from "~/components/Achievements";
+import { ContactCta } from "~/components/ContactCta";
 import { Hero } from "~/components/Hero";
 import { HowItWorks } from "~/components/HowItWorks";
-import { Manifesto } from "~/components/Manifesto";
+import { MeetCompanion } from "~/components/MeetCompanion";
+import { OriginStory } from "~/components/OriginStory";
+import { OptionsPricing } from "~/components/OptionsPricing";
+import { Outcomes } from "~/components/Outcomes";
+import { ProblemSection } from "~/components/ProblemSection";
 import { Reveal } from "~/components/Reveal";
 import { SiteFooter } from "~/components/SiteFooter";
 import { SiteHeader } from "~/components/SiteHeader";
+import { Testimonials } from "~/components/Testimonials";
 
 const Home = () => {
   return (
@@ -16,17 +22,31 @@ const Home = () => {
           <Hero />
         </Reveal>
         <Reveal>
-          <Manifesto />
+          <ProblemSection />
         </Reveal>
-        <div
-          aria-hidden="true"
-          className="w-full border-t border-(--storia-black15)"
-        />
+        <Reveal>
+          <MeetCompanion />
+        </Reveal>
         <Reveal>
           <HowItWorks />
         </Reveal>
         <Reveal>
-          <CallOut />
+          <OriginStory />
+        </Reveal>
+        <Reveal>
+          <Achievements />
+        </Reveal>
+        <Reveal>
+          <Outcomes />
+        </Reveal>
+        <Reveal>
+          <Testimonials />
+        </Reveal>
+        <Reveal>
+          <OptionsPricing />
+        </Reveal>
+        <Reveal>
+          <ContactCta />
         </Reveal>
         <Reveal>
           <SiteFooter />

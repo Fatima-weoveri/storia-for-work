@@ -2,20 +2,23 @@ const cards = [
   {
     stat: "2 weeks",
     body: "Most users notice a shift in how they think within two weeks of daily entries.",
-    tone: "#F0EBE3",
-    accent: "var(--storia-orange)",
+    tone: "var(--storia-green30)",
+    accent: "var(--storia-black75)",
+    emoji: "🌅",
   },
   {
     stat: "80%",
     body: "Of Storia users report feeling less caught in mental loops after 30 days of consistent use.",
-    tone: "#E8EEF5",
-    accent: "var(--storia-blue)",
+    tone: "var(--storia-green30)",
+    accent: "var(--storia-black75)",
+    emoji: "🌀",
   },
   {
     stat: "3x",
     body: "People who reflect with structure make decisions with more confidence than those journaling freely.",
-    tone: "#E8F0EB",
-    accent: "var(--storia-green)",
+    tone: "var(--storia-green30)",
+    accent: "var(--storia-black75)",
+    emoji: "🎯",
   },
 ];
 
@@ -31,16 +34,12 @@ export const Outcomes = () => {
           {cards.map((card) => (
             <article
               key={card.stat}
-              className="rounded-[20px] p-8 text-center"
+              className="rounded-[20px] border-[0.5px] border-solid border-(--storia-black15) p-8 text-center shadow-[0_10px_28px_rgba(33,37,41,0.1)]"
               style={{ backgroundColor: card.tone }}
             >
-              <div className="flex h-10 items-center justify-center">
-                <span
-                  className="inline-block h-5 w-5 rounded-full"
-                  style={{ backgroundColor: card.accent }}
-                  aria-hidden
-                />
-              </div>
+              <p className="text-[42px] leading-none font-bold md:text-[48px] opacity-90">
+                {card.emoji}
+              </p>
               <p
                 className="mt-4 text-[42px] leading-none font-bold md:text-[48px]"
                 style={{

@@ -1,10 +1,10 @@
 import { ArrowRight, Mail } from "lucide-react";
-import heroImage from "../../assets/workingSunny.png";
+import heroImage from "../../assets/thinkingSunny.png";
 import { ButtonComponent } from "~/components/ButtonComponent";
 
 export const Hero = () => {
   return (
-    <section className="section-shell bg-(--storia-coffee-light) min-h-[calc(100vh-var(--site-header-height))]">
+    <section className="section-shell bg-(--storia-coffee-light) ">
       <div
         className="hero-texture pointer-events-none absolute inset-0 z-0"
         aria-hidden
@@ -39,7 +39,7 @@ export const Hero = () => {
               </ButtonComponent>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-[440px] lg:self-end lg:translate-x-12">
+          <div className="mx-auto w-full max-w-[340px] lg:self-end lg:translate-x-12">
             <img
               src={heroImage}
               alt="Character working at a desk with a laptop"

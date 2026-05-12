@@ -3,7 +3,7 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import * as React from "react";
 import { DefaultCatchBoundary } from "~/components/DefaultCatchBoundary";
 import { NotFound } from "~/components/NotFound";
-import iconUrl from "../../assets/iconCircle.png?url";
+import iconUrl from "../../assets/iconSunny.png?url";
 import appCss from "~/styles/app.css?url";
 
 const RootDocument = ({ children }: { children: React.ReactNode }) => {

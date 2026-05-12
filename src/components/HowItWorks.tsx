@@ -76,8 +76,12 @@ export const HowItWorks = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="how-it-works" className="section-shell">
-      <div className="section-inner">
+    <section
+      ref={sectionRef}
+      id="how-it-works"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)]"
+    >
+      <div className="section-inner max-w-[1024px]!">
         <div className="mb-4 flex justify-center md:mb-6">
           <p className="section-pill">How it works</p>
         </div>
@@ -87,13 +91,13 @@ export const HowItWorks = () => {
         </p>
 
         <div className="mt-4 md:mt-8">
-          <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3 md:gap-4 lg:gap-4 min-[1200px]:[&_h3]:whitespace-nowrap">
             {steps.map((step, index) => {
               const shown = visibleCount > index;
               return (
                 <article
                   key={step.n}
-                  className={`min-w-0 px-6 py-8 text-center motion-reduce:transition-none lg:px-8 ${
+                  className={`min-w-0 px-3 py-8 text-center motion-reduce:transition-none md:px-2 lg:px-4 ${
                     shown
                       ? "translate-y-0 opacity-100"
                       : "pointer-events-none translate-y-3 opacity-0"
@@ -108,10 +112,10 @@ export const HowItWorks = () => {
                       decoding="async"
                     />
                   </div>
-                  <h3 className="mb-4 text-[20px] font-bold text-(--storia-black)">
+                  <h3 className="mb-4 text-[24px] font-bold tracking-[-0.035em] text-(--storia-black90)">
                     {step.title}
                   </h3>
-                  <p className="text-[15px] leading-[1.65] text-(--storia-black75)">
+                  <p className="text-[14px] leading-[1.65] text-(--storia-black75)">
                     {step.body}
                   </p>
                 </article>

@@ -14,7 +14,6 @@
   --storia-beige: #f3eee8;
   --storia-coffee: #e3dacd;
   --storia-coffee-light: rgb(235, 228, 218, 0.5);
-  --storia-black: #212529;
   --storia-white: #ffffff;
   --storia-white75: rgba(255, 255, 255, 0.75);
   --storia-white50: rgba(255, 255, 255, 0.5);
@@ -38,6 +37,8 @@
   --storia-yellow: #fde293;
   --storia-yellow75: rgba(253, 226, 147, 0.75);
   --storia-yellow50: rgba(253, 226, 147, 0.5);
+  --storia-black: #212529;
+  --storia-black90: rgba(33, 37, 41, 0.9);
   --storia-black75: rgba(33, 37, 41, 0.75);
   --storia-black50: rgba(33, 37, 41, 0.5);
   --storia-black40: rgba(33, 37, 41, 0.4);

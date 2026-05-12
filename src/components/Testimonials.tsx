@@ -16,14 +16,14 @@ const slides = [
     quote:
       "The nudges feel like something a wise friend would say. They show up when I'm spiralling and gently point me back to what actually matters without making me feel like I'm doing it wrong.",
     name: "Jess T.",
-    role: "Freelance Designer",
+    role: "UI/UX Designer",
     image: testimonial2,
   },
   {
     quote:
       "Storia is the first app where I actually understand myself better after a month. Seeing my patterns spelled out made it easier to change small habits that were draining me.",
     name: "Sofia R.",
-    role: "Early user",
+    role: "Content Writer",
     image: testimonial3,
   },
 ];
@@ -45,7 +45,10 @@ export const Testimonials = () => {
   };
 
   return (
-    <section className="section-shell overflow-x-clip bg-(--storia-coffee-light)">
+    <section
+      id="testimonials"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] overflow-x-clip bg-(--storia-coffee-light)"
+    >
       <div
         aria-hidden
         className="pointer-events-none absolute top-1/2 left-0 z-0 h-[min(55vw,320px)] w-[min(55vw,320px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--storia-blue) opacity-40 blur-3xl"
@@ -59,7 +62,7 @@ export const Testimonials = () => {
         <div className="section-inner w-full">
           <div className="mx-auto flex w-full max-w-[720px] flex-col items-center text-center">
             <h2 className="font-[Fraunces,serif] text-[clamp(1.75rem,3.6vw,2.35rem)] leading-[1.2] font-semibold tracking-[-0.02em] text-(--storia-black)">
-              What people are saying.
+              What people are saying
             </h2>
 
             <div className="mt-10 w-full sm:mt-12">
@@ -73,8 +76,8 @@ export const Testimonials = () => {
                       : "translateX(0)",
                   }}
                 >
-                  <p className="mx-auto max-w-[640px] font-[Fraunces,serif] text-[clamp(1.05rem,2.1vw,1.3rem)] leading-[1.75] font-normal text-(--storia-black) italic">
-                    &quot;{slides[active].quote}&quot;
+                  <p className="mx-auto max-w-[640px] text-[clamp(1.05rem,2.1vw,1.3rem)] leading-[1.75] font-normal text-(--storia-black)">
+                    “{slides[active].quote}”
                   </p>
                   <div className="mt-7 flex justify-center">
                     <div className="flex items-center gap-3">
@@ -101,7 +104,7 @@ export const Testimonials = () => {
               <div className="mt-7 flex items-center justify-center gap-10">
                 <button
                   type="button"
-                  className="cursor-pointer rounded-full p-1 text-(--storia-black) transition-colors hover:text-(--storia-orange)"
+                  className="cursor-pointer rounded-full p-1 text-(--storia-black) transition-colors hover:text-(--storia-green)"
                   onClick={() => cycle(-1)}
                   aria-label="Previous testimonial"
                 >
@@ -109,7 +112,7 @@ export const Testimonials = () => {
                 </button>
                 <button
                   type="button"
-                  className="cursor-pointer rounded-full p-1 text-(--storia-black) transition-colors hover:text-(--storia-orange)"
+                  className="cursor-pointer rounded-full p-1 text-(--storia-black) transition-colors hover:text-(--storia-green)"
                   onClick={() => cycle(1)}
                   aria-label="Next testimonial"
                 >
@@ -132,7 +135,9 @@ export const Testimonials = () => {
                       }, 180);
                     }}
                     className={`h-2 w-2 shrink-0 rounded-full transition-colors ${
-                      index === active ? "bg-(--storia-orange)" : "bg-[#D0C8C0]"
+                      index === active
+                        ? "bg-(--storia-green)"
+                        : "bg-(--storia-black15)"
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />

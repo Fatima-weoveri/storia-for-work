@@ -67,7 +67,7 @@ const SidePhoneShell = ({ side }: { side: "left" | "right" }) => (
     }
     aria-hidden
   >
-    <div className="aspect-9/19.5 rounded-[1.35rem] border-[5px] border-white bg-white shadow-[0_12px_32px_rgba(0,0,0,0.28)] sm:rounded-4xl sm:border-[6px]"></div>
+    <div className="aspect-9/19.5 rounded-[1.35rem] bg-(--storia-black50) shadow-(--storia-black50) sm:rounded-4xl"></div>
   </div>
 );
 
@@ -146,7 +146,8 @@ export const FeatureShowcaseCarousel = () => {
 
   return (
     <section
-      className="section-shell justify-center bg-(--storia-black) text-white min-h-[calc(100vh-var(--site-header-height))]"
+      id="features"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-1rem)] justify-center bg-(--storia-coffee-light) min-h-[calc(100vh-var(--site-header-height))]"
       aria-label="App features"
     >
       <div className="section-inner">
@@ -204,11 +205,11 @@ export const FeatureShowcaseCarousel = () => {
                     className="shrink-0 px-1"
                     style={{ flex: `0 0 ${slideBasis}` }}
                   >
-                    <h2 className="text-[clamp(1.45rem,3.2vw,2.15rem)] leading-[1.1] font-medium tracking-tight text-white">
+                    <h2 className="text-[clamp(1.45rem,3.2vw,2.15rem)] leading-[1.1] font-medium tracking-tight text-(--storia-black90)">
                       {slide.title}
                     </h2>
                     <p
-                      className="mt-4 max-w-[440px] text-[17px] leading-[1.55] text-white/80"
+                      className="mt-4 max-w-[440px] text-[17px] leading-[1.55] text-(--storia-black75)"
                       aria-live="polite"
                     >
                       {slide.description}
@@ -222,7 +223,7 @@ export const FeatureShowcaseCarousel = () => {
               <button
                 type="button"
                 onClick={goPrev}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-white/50 hover:bg-white/10"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-(--storia-black50) text-black50 transition-colors hover:border-(--storia-black50) cursor-pointer"
                 aria-label="Previous feature"
               >
                 <ChevronLeft className="h-5 w-5" strokeWidth={1.5} />
@@ -230,7 +231,7 @@ export const FeatureShowcaseCarousel = () => {
               <button
                 type="button"
                 onClick={goNext}
-                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:border-white/50 hover:bg-white/10"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-(--storia-black50) text-black50 transition-colors hover:border-(--storia-black50) cursor-pointer"
                 aria-label="Next feature"
               >
                 <ChevronRight className="h-5 w-5" strokeWidth={1.5} />

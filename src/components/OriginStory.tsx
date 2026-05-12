@@ -1,6 +1,11 @@
+import founderPhoto from "../../assets/founder.jpeg";
+
 export const OriginStory = () => {
   return (
-    <section className="section-shell bg-(--storia-coffee-light)">
+    <section
+      id="our-story"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] bg-(--storia-coffee-light)"
+    >
       <div className="section-inner">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           <div>
@@ -33,12 +38,12 @@ export const OriginStory = () => {
           </div>
 
           <div className="mx-auto w-full max-w-[430px]">
-            <div className="relative aspect-4/5 w-full rounded-[32px] bg-[#E0D8CE] p-6">
-              <div className="flex h-full items-center justify-center rounded-[24px] border border-(--storia-black15)">
-                <p className="text-center text-[14px] text-(--storia-black50)">
-                  Founder photo or illustration
-                </p>
-              </div>
+            <div className="relative aspect-4/5 w-full overflow-hidden rounded-[32px] border border-(--storia-black15)">
+              <img
+                src={founderPhoto}
+                alt="Elizabeth Uviebinené, founder of Storia For Work"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
         </div>

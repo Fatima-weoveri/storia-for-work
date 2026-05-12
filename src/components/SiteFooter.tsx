@@ -7,7 +7,7 @@ export const SiteFooter = () => {
             <p className="font-medium text-(--storia-black)">Storia</p>
             <p className="flex flex-wrap items-center justify-start gap-8 md:justify-center">
               <a href="#how-it-works">How it works</a>
-              <a href="#manifesto">Manifesto</a>
+              <a href="#our-story">Our story</a>
               <a href="#">Privacy</a>
               <a href="#contact">Contact</a>
             </p>

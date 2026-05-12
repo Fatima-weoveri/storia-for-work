@@ -116,7 +116,7 @@ export const OptionsPricing = () => {
   return (
     <section
       id="pricing"
-      className="section-shell py-9! md:py-10!"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)+1rem)] py-9! md:py-10!"
     >
       <div className="section-inner">
         <p className="section-pill">Options & pricing</p>

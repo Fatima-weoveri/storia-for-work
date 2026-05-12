@@ -2,29 +2,32 @@ const cards = [
   {
     stat: "2 weeks",
     body: "Most users notice a shift in how they think within two weeks of daily entries.",
-    tone: "var(--storia-green30)",
-    accent: "var(--storia-black75)",
+    tone: "var(--storia-coffee-light)",
+    accent: "var(--storia-black90)",
     emoji: "🌅",
   },
   {
     stat: "80%",
     body: "Of Storia users report feeling less caught in mental loops after 30 days of consistent use.",
-    tone: "var(--storia-green30)",
-    accent: "var(--storia-black75)",
+    tone: "var(--storia-coffee-light)",
+    accent: "var(--storia-black90)",
     emoji: "🌀",
   },
   {
     stat: "3x",
     body: "People who reflect with structure make decisions with more confidence than those journaling freely.",
-    tone: "var(--storia-green30)",
-    accent: "var(--storia-black75)",
+    tone: "var(--storia-coffee-light)",
+    accent: "var(--storia-black90)",
     emoji: "🎯",
   },
 ];
 
 export const Outcomes = () => {
   return (
-    <section className="section-shell">
+    <section
+      id="outcomes"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)]"
+    >
       <div className="section-inner">
         <h2 className="mx-auto max-w-[780px] text-center text-[clamp(2.1rem,4vw,2.5rem)] leading-[1.2] text-(--storia-black)">
           What consistent reflection actually does.

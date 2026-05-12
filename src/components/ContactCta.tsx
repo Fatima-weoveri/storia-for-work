@@ -118,7 +118,10 @@ export const ContactCta = () => {
   };
 
   return (
-    <section id="contact" className="section-shell">
+    <section
+      id="contact"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)]"
+    >
       <div className="section-inner max-w-[1080px]">
         <div className="overflow-hidden">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.02fr)] lg:gap-14 lg:items-start">
@@ -297,10 +300,10 @@ export const ContactCta = () => {
                 {isSubmitting ? "Sending…" : "Request a demo"}
               </button>
               <p className="text-center text-[12px] leading-normal text-(--storia-black50)">
-                We&apos;ll only use your details to respond to this request.{" "}
+                We'll only use your details to respond to this request.{" "}
                 <button
                   type="button"
-                  className="underline decoration-(--storia-black40) underline-offset-2 hover:text-(--storia-black)"
+                  className="cursor-pointer underline decoration-(--storia-black40) underline-offset-2 hover:text-(--storia-black)"
                   onClick={() => {
                     const form = formRef.current;
                     if (form && phoneValue && isValidPhoneNumber(phoneValue)) {

@@ -4,7 +4,10 @@ import { ButtonComponent } from "~/components/ButtonComponent";
 
 export const Hero = () => {
   return (
-    <section className="section-shell bg-(--storia-coffee-light) ">
+    <section
+      id="hero"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] bg-(--storia-coffee-light) "
+    >
       <div
         className="hero-texture pointer-events-none absolute inset-0 z-0"
         aria-hidden
@@ -25,7 +28,7 @@ export const Hero = () => {
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <ButtonComponent
-                href="mailto:hello@storia.world"
+                href="#contact"
                 icon={<Mail size={16} strokeWidth={1.75} aria-hidden />}
               >
                 Contact us

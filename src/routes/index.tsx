@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Achievements } from "~/components/Achievements";
 import { ContactCta } from "~/components/ContactCta";
+import { FeatureShowcaseCarousel } from "~/components/FeatureShowcaseCarousel";
 import { Hero } from "~/components/Hero";
 import { HowItWorks } from "~/components/HowItWorks";
 import { MeetCompanion } from "~/components/MeetCompanion";
@@ -29,6 +30,9 @@ const Home = () => {
         </Reveal>
         <Reveal>
           <HowItWorks />
+        </Reveal>
+        <Reveal>
+          <FeatureShowcaseCarousel />
         </Reveal>
         <Reveal>
           <OriginStory />

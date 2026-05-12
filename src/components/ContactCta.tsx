@@ -1,5 +1,5 @@
 import type { FormEvent } from "react";
-import { useId, useState } from "react";
+import { useId, useRef, useState } from "react";
 import PhoneInput, {
   isValidPhoneNumber,
   type Value,
@@ -33,13 +33,25 @@ function buildMailBody(fd: FormData, phoneE164: string): string {
   return lines.join("\n");
 }
 
+function openMailtoFallback(fd: FormData, phoneE164: string) {
+  const subject = encodeURIComponent("Demo request — Storia for Work");
+  const body = encodeURIComponent(buildMailBody(fd, phoneE164));
+  window.location.href = `mailto:hello@storia.world?subject=${subject}&body=${body}`;
+}
+
 export const ContactCta = () => {
   const uid = useId();
+  const formRef = useRef<HTMLFormElement>(null);
   const field = (name: string) => `${uid}-${name}`;
   const [phoneValue, setPhoneValue] = useState<Value | undefined>();
   const [phoneError, setPhoneError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formMessage, setFormMessage] = useState<{
+    type: "success" | "error";
+    text: string;
+  } | null>(null);
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
@@ -53,10 +65,56 @@ export const ContactCta = () => {
       return;
     }
     setPhoneError(null);
+    setFormMessage(null);
 
-    const subject = encodeURIComponent("Demo request — Storia for Work");
-    const body = encodeURIComponent(buildMailBody(fd, phoneValue));
-    window.location.href = `mailto:hello@storia.world?subject=${subject}&body=${body}`;
+    const payload = {
+      help: String(fd.get("help") ?? ""),
+      firstName: String(fd.get("firstName") ?? ""),
+      lastName: String(fd.get("lastName") ?? ""),
+      email: String(fd.get("email") ?? ""),
+      phone: phoneValue,
+      jobTitle: String(fd.get("jobTitle") ?? ""),
+    };
+
+    setIsSubmitting(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      let data: { ok?: boolean; error?: string } = {};
+      try {
+        data = (await res.json()) as { ok?: boolean; error?: string };
+      } catch {
+        /* non-JSON */
+      }
+
+      if (res.ok && data.ok !== false) {
+        setFormMessage({
+          type: "success",
+          text: "Thanks! We've received your request and will be in touch soon.",
+        });
+        form.reset();
+        setPhoneValue(undefined);
+        return;
+      }
+
+      const msg =
+        data.error ||
+        (res.status === 503
+          ? "This form is not configured yet. Use email below."
+          : "Something went wrong. Please try again or email us.");
+      setFormMessage({ type: "error", text: msg });
+    } catch {
+      setFormMessage({
+        type: "error",
+        text: "Network error. Check your connection or email us instead.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -89,7 +147,26 @@ export const ContactCta = () => {
               </div>
             </div>
 
-            <form className="min-w-0 space-y-5" onSubmit={onSubmit} noValidate>
+            <form
+              ref={formRef}
+              id="contact-demo-form"
+              className="min-w-0 space-y-5"
+              onSubmit={onSubmit}
+              noValidate
+            >
+              {formMessage ? (
+                <div
+                  role="status"
+                  className={`rounded-lg border px-4 py-3 text-[14px] leading-snug ${
+                    formMessage.type === "success"
+                      ? "border-(--storia-green) bg-(--storia-green50) text-(--storia-black)"
+                      : "border-(--storia-orange) bg-(--storia-orange50) text-(--storia-black)"
+                  }`}
+                >
+                  {formMessage.text}
+                </div>
+              ) : null}
+
               <div>
                 <label htmlFor={field("help")} className={labelClass}>
                   How can we help?{" "}
@@ -214,12 +291,28 @@ export const ContactCta = () => {
 
               <button
                 type="submit"
-                className="mt-2 w-full rounded-xl bg-(--storia-black) py-3.5 text-[15px] font-semibold text-(--storia-white) transition-colors hover:bg-(--storia-black75)"
+                disabled={isSubmitting}
+                className="mt-2 w-full rounded-xl bg-(--storia-black) py-3.5 text-[15px] font-semibold text-(--storia-white) transition-colors hover:bg-(--storia-black75) disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Request a demo
+                {isSubmitting ? "Sending…" : "Request a demo"}
               </button>
               <p className="text-center text-[12px] leading-normal text-(--storia-black50)">
-                We&apos;ll only use your details to respond to this request.
+                We&apos;ll only use your details to respond to this request.{" "}
+                <button
+                  type="button"
+                  className="underline decoration-(--storia-black40) underline-offset-2 hover:text-(--storia-black)"
+                  onClick={() => {
+                    const form = formRef.current;
+                    if (form && phoneValue && isValidPhoneNumber(phoneValue)) {
+                      openMailtoFallback(new FormData(form), phoneValue);
+                      return;
+                    }
+                    window.location.href =
+                      "mailto:hello@storia.world?subject=Demo%20request%20%E2%80%94%20Storia%20for%20Work";
+                  }}
+                >
+                  Email us instead
+                </button>
               </p>
             </form>
           </div>

@@ -12,7 +12,6 @@ export const SiteHeader = () => {
           <a href="#problem">Why Storia</a>
           <a href="#meet-the-agent">Meet Sunny</a>
           <a href="#how-it-works">How it works</a>
-          <a href="#features">Features</a>
           <a href="#our-story">Our story</a>
           <a href="#achievements">Achievements</a>
           <a href="#pricing">Pricing</a>

@@ -100,13 +100,25 @@ export const Testimonials = () => {
                   </p>
                   <div className="mt-7 flex justify-center">
                     <div className="flex items-center gap-3">
-                      <img
-                        src={slides[active].image}
-                        alt=""
-                        width={48}
-                        height={48}
-                        className="h-12 w-12 shrink-0 rounded-full object-cover ring-1 ring-(--storia-black15)"
-                      />
+                      <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full ring-1 ring-(--storia-black15)">
+                        {slides.map((slide, index) => (
+                          <img
+                            key={slide.name}
+                            src={slide.image}
+                            alt=""
+                            width={48}
+                            height={48}
+                            loading="eager"
+                            decoding="async"
+                            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-150 ease-out ${
+                              index === active
+                                ? "z-10 opacity-100"
+                                : "z-0 opacity-0"
+                            }`}
+                            aria-hidden={index !== active}
+                          />
+                        ))}
+                      </div>
                       <div className="text-left">
                         <p className="text-[15px] font-semibold text-(--storia-black)">
                           {slides[active].name}

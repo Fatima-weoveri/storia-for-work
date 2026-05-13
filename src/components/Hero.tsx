@@ -5,31 +5,31 @@ import { ButtonComponent } from "~/components/ButtonComponent";
 const HERO_FLOAT_BADGES = [
   {
     label: "Burnout spotted",
-    dot: "green" as const,
+    dot: "bg-(--storia-black50)",
     motion: "hero-float-y",
     position: "top-[2%] left-[-2%] z-10 sm:left-[-6%]",
   },
   {
     label: "Stress mapped",
-    dot: "dark" as const,
+    dot: "bg-(--storia-orange)",
     motion: "hero-float-y--b",
     position: "top-[20%] right-[-8%] z-10 sm:right-[-12%]",
   },
   {
     label: "Fatigue",
-    dot: "dark" as const,
+    dot: "bg-(--storia-blue)",
     motion: "hero-float-y--c",
     position: "top-[48%] left-[-4%] z-10 sm:left-[-20%]",
   },
   {
     label: "Deadline crunch ",
-    dot: "dark" as const,
+    dot: "bg-(--storia-yellow)",
     motion: "hero-float-y",
     position: "bottom-[10%] left-[-3%] z-10 sm:left-[-8%]",
   },
   {
     label: "Overwhelm",
-    dot: "green" as const,
+    dot: "bg-(--storia-green)",
     motion: "hero-float-y--b",
     position: "bottom-[26%] right-[-8%] z-10 sm:right-[-20%]",
   },
@@ -86,11 +86,7 @@ export const Hero = () => {
                 aria-hidden
               >
                 <span
-                  className={
-                    badge.dot === "green"
-                      ? "size-1.5 shrink-0 rounded-full bg-(--storia-green)"
-                      : "size-1.5 shrink-0 rounded-full bg-(--storia-black)"
-                  }
+                  className={`size-2 shrink-0 rounded-full ${badge.dot}`}
                   aria-hidden
                 />
                 <span className="font-sans text-[9px] font-medium tracking-[0.11em] text-(--storia-black75) uppercase sm:text-[10px]">

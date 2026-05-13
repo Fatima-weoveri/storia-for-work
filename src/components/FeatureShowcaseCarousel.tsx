@@ -180,12 +180,19 @@ export const FeatureShowcaseCarousel = () => {
 
   return (
     <section
-      id="features"
+      id="how-it-works"
       className="section-shell scroll-mt-[calc(var(--site-header-height)-1rem)] bg-(--storia-coffee-light)"
       aria-label="App features"
     >
       <div className="section-inner">
-        <div className="mx-auto flex w-full flex-col items-center gap-2 lg:max-w-[min(100%,960px)] lg:flex-row lg:items-center lg:justify-center lg:gap-2">
+        <div className="mb-4 flex justify-center md:mb-6">
+          <p className="section-pill">How it works</p>
+        </div>
+        <p className="mx-auto max-w-[600px] text-center text-[17px] leading-[1.65] text-(--storia-black75)">
+          A daily intelligence system that learns how they think, surfaces their
+          patterns, and helps them make better decisions over time.
+        </p>
+        <div className="mx-auto flex w-full flex-col items-center gap-2 lg:max-w-[min(100%,960px)] lg:flex-row lg:items-center lg:justify-center lg:gap-2 mt-6 md:mt-10">
           {/* Phone cluster: ghost frames (underlap center) + carousel */}
           <div
             className="relative flex w-full max-w-[min(100%,580px)] shrink-0 items-center justify-center"

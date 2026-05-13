@@ -34,11 +34,14 @@ const Home = () => {
         <Reveal>
           <MeetCompanion />
         </Reveal>
-        <Reveal>
+        {/* <Reveal>
           <HowItWorks />
-        </Reveal>
+        </Reveal> */}
         <Reveal>
           <FeatureShowcaseCarousel />
+        </Reveal>
+        <Reveal>
+          <TimeReclaimedBanner />
         </Reveal>
         <Reveal>
           <OurApproach />
@@ -48,9 +51,6 @@ const Home = () => {
         </Reveal>
         <Reveal>
           <Achievements />
-        </Reveal>
-        <Reveal>
-          <TimeReclaimedBanner />
         </Reveal>
         <Reveal>
           <Outcomes />

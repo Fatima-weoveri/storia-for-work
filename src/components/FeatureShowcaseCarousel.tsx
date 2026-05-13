@@ -5,33 +5,67 @@ import featureCommunity from "../../assets/featureCommunity.png";
 import featureEcho from "../../assets/featureEcho.png";
 import featureInsights from "../../assets/featureInsights.png";
 import featureWeeklyReview from "../../assets/featureWeeklyReview.png";
+import homeScreen from "../../assets/homeScreen.png";
 
 const SLIDES = [
+  {
+    image: homeScreen,
+    title: "Today",
+    description:
+      "Your home base for the day—greeting, streaks, and a clear queue of short practices. Open once, see what’s left, and tap in when you’re ready.",
+    pointers: [
+      "Weekly progress at a glance—no digging for streaks.",
+      "Daily cards with honest time estimates.",
+      "One screen before you dive into any single flow.",
+    ],
+    imageAlt: "Today home screen with daily activities and weekly progress",
+  },
   {
     image: featureEcho,
     title: "The Echo",
     description:
-      "Past entries resurface with short AI reflections so you can spot the thread.",
+      "Past entries resurface with short AI reflections. So you can spot the thread without digging through old pages.",
+    pointers: [
+      "Old lines come back where they help—no archive diving.",
+      "Each note sits beside what you actually wrote.",
+      "Enough to see the pattern, not a lecture.",
+    ],
     imageAlt: "The Echo screen showing a reflective journal reply",
   },
   {
     image: featureInsights,
     title: "Insights",
     description:
-      "See moods, habits, and quiet wins in AI reflections built from your entries.",
+      "See moods, habits, and quiet wins in one place. Reflections are built from your entries—not generic charts.",
+    pointers: [
+      "Patterns show up instead of one-off vent days.",
+      "Small wins get named so progress feels real.",
+      "Grounded in your words, not dashboard filler.",
+    ],
     imageAlt: "Insights tab showing life arc and pattern highlights",
   },
   {
     image: featureCommunity,
     title: "Member connections",
-    description: "Message and swap ideas in a private space for your people.",
+    description:
+      "Message and swap ideas in one private room. For the people you actually want in the loop.",
+    pointers: [
+      "A closed circle—not a public feed.",
+      "Share prompts, wins, and hard days plainly.",
+      "Human tone, with light guardrails.",
+    ],
     imageAlt: "Community growth feed with shared reflections",
   },
   {
     image: featureWeeklyReview,
     title: "Weekly review",
     description:
-      "A warm recap of your week—what moved, what stuck, what’s next.",
+      "A warm recap of what moved, what stuck, and what’s next. One read—without reopening every entry.",
+    pointers: [
+      "Captures the week without rereading everything.",
+      "Surfaces what mattered so Monday isn’t a blank.",
+      "Ends with a gentle next step—not pressure.",
+    ],
     imageAlt: "Weekly review card with a playful headline",
   },
 ] as const;
@@ -147,7 +181,7 @@ export const FeatureShowcaseCarousel = () => {
   return (
     <section
       id="features"
-      className="section-shell scroll-mt-[calc(var(--site-header-height)-1rem)] justify-center bg-(--storia-coffee-light) min-h-[calc(100vh-var(--site-header-height))]"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-1rem)] bg-(--storia-coffee-light)"
       aria-label="App features"
     >
       <div className="section-inner">
@@ -192,10 +226,10 @@ export const FeatureShowcaseCarousel = () => {
           </div>
 
           {/* Copy + controls */}
-          <div className="flex min-h-[200px] w-full max-w-[min(100%,480px)] shrink-0 flex-col justify-center lg:max-w-[440px]">
-            <div className="relative min-h-9.5rem overflow-hidden sm:min-h-8rem">
+          <div className="flex w-full max-w-[min(100%,480px)] shrink-0 flex-col justify-start lg:max-w-[440px]">
+            <div className="relative overflow-hidden">
               <div
-                className={`flex ${transitionClass}`}
+                className={`flex items-start ${transitionClass}`}
                 style={trackStyle}
                 onTransitionEnd={handleLoopTransitionEnd}
               >
@@ -209,17 +243,31 @@ export const FeatureShowcaseCarousel = () => {
                       {slide.title}
                     </h2>
                     <p
-                      className="mt-4 max-w-[440px] text-[17px] leading-[1.55] text-(--storia-black75)"
+                      className="mt-4 max-w-[440px] whitespace-pre-line text-[15px] leading-[1.55] text-(--storia-black75)"
                       aria-live="polite"
                     >
                       {slide.description}
                     </p>
+                    <ul
+                      className="mt-5 max-w-[440px] list-none space-y-2.5 text-[15px] leading-normal text-(--storia-black75)"
+                      aria-label="Highlights"
+                    >
+                      {slide.pointers.map((point) => (
+                        <li key={point} className="flex gap-3">
+                          <span
+                            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-(--storia-green)"
+                            aria-hidden
+                          />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="mt-8 flex items-center gap-3">
+            <div className="mt-5 flex items-center gap-3">
               <button
                 type="button"
                 onClick={goPrev}

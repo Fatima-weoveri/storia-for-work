@@ -6,13 +6,16 @@ import { Hero } from "~/components/Hero";
 import { HowItWorks } from "~/components/HowItWorks";
 import { MeetCompanion } from "~/components/MeetCompanion";
 import { OriginStory } from "~/components/OriginStory";
+import { OurApproach } from "~/components/OurApproach";
 import { OptionsPricing } from "~/components/OptionsPricing";
 import { Outcomes } from "~/components/Outcomes";
 import { ProblemSection } from "~/components/ProblemSection";
+import { ToolsGapCallout } from "~/components/ToolsGapCallout";
 import { Reveal } from "~/components/Reveal";
 import { SiteFooter } from "~/components/SiteFooter";
 import { SiteHeader } from "~/components/SiteHeader";
 import { Testimonials } from "~/components/Testimonials";
+import { TimeReclaimedBanner } from "~/components/TimeReclaimedBanner";
 
 const Home = () => {
   return (
@@ -26,6 +29,9 @@ const Home = () => {
           <ProblemSection />
         </Reveal>
         <Reveal>
+          <ToolsGapCallout />
+        </Reveal>
+        <Reveal>
           <MeetCompanion />
         </Reveal>
         <Reveal>
@@ -35,10 +41,16 @@ const Home = () => {
           <FeatureShowcaseCarousel />
         </Reveal>
         <Reveal>
+          <OurApproach />
+        </Reveal>
+        <Reveal>
           <OriginStory />
         </Reveal>
         <Reveal>
           <Achievements />
+        </Reveal>
+        <Reveal>
+          <TimeReclaimedBanner />
         </Reveal>
         <Reveal>
           <Outcomes />

@@ -1,4 +1,5 @@
 import founderPhoto from "../../assets/founder.jpeg";
+import sunnyThoughts from "../../assets/sunnyThoughts.png";
 
 export const OriginStory = () => {
   return (
@@ -27,13 +28,24 @@ export const OriginStory = () => {
                 shift. That's what Storia is built to give you."
               </p>
             </div>
-            <div className="mt-5 max-w-[620px] text-right">
-              <p className="text-[15px] text-(--storia-black)">
-                - Elizabeth Uviebinené
-              </p>
-              <p className="mt-1 text-[15px] font-bold text-(--storia-black)">
-                Founder, Storia For Work
-              </p>
+            <div className="mt-5 max-w-[620px]">
+              <div className="flex items-start justify-between gap-3 sm:gap-4">
+                <img
+                  src={sunnyThoughts}
+                  alt="Illustration of Sunny reflecting: from scattered notes to intentional progress"
+                  className="h-auto w-[min(70%,240px)] max-h-[200px] shrink-0 object-contain object-bottom sm:w-[min(70%,240px)] sm:max-h-[200px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="min-w-0 text-right">
+                  <p className="text-[15px] text-(--storia-black)">
+                    - Elizabeth Uviebinené
+                  </p>
+                  <p className="mt-1 text-[15px] font-bold text-(--storia-black)">
+                    Founder, Storia For Work
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 

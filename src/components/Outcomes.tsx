@@ -1,3 +1,5 @@
+import harvardLogo from "../../assets/harvardLogo.png";
+
 const cards = [
   {
     stat: "2 weeks",
@@ -33,6 +35,11 @@ export const Outcomes = () => {
           What consistent reflection actually does.
         </h2>
 
+        <p className="mt-4 text-center text-[14px] text-(--storia-black75)">
+          Outcomes based on early user feedback and structured reflection
+          research.
+        </p>
+
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((card) => (
             <article
@@ -44,7 +51,7 @@ export const Outcomes = () => {
                 {card.emoji}
               </p>
               <p
-                className="mt-4 text-[42px] leading-none font-bold md:text-[48px]"
+                className="mt-4 text-[42px] leading-none  md:text-[48px]"
                 style={{
                   color: card.accent,
                   fontFamily: "Fraunces, serif",
@@ -59,10 +66,27 @@ export const Outcomes = () => {
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[12px] italic text-(--storia-black50)">
-          *Outcomes based on early user feedback and structured reflection
-          research.
-        </p>
+        <div className="mt-4 flex flex-col items-center gap-4 pt-12 md:flex-row md:items-center md:justify-center md:gap-4">
+          <div className="shrink-0 px-6 py-4">
+            <img
+              src={harvardLogo}
+              alt="Harvard University"
+              className="mx-auto h-9 w-auto max-w-[200px] object-contain sm:h-10 md:h-11"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div className="max-w-[520px] text-center md:text-left">
+            <p className="text-[14px] leading-[1.65] text-(--storia-black75) md:text-[14px]">
+              The outcomes you see above rest on the same science{" "}
+              <strong className="font-semibold text-(--storia-black90)">
+                science backed by Harvard research;
+              </strong>{" "}
+              structured writing helps people step out of loops and decide with
+              more confidence.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

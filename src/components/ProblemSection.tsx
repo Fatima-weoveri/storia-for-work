@@ -69,7 +69,7 @@ export const ProblemSection = () => {
             <div className="aspect-4/5 w-full rounded-[40px] bg-[#E8E0D4] p-6">
               <div className="flex h-full items-center justify-center rounded-[32px] border border-(--storia-black15)">
                 <p className="text-center text-[14px] text-(--storia-black50)">
-                  Illustration / 3D character
+                  Video
                 </p>
               </div>
             </div>

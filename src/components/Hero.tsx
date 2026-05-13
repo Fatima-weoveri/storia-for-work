@@ -1,6 +1,42 @@
 import { ArrowRight, Mail } from "lucide-react";
-import heroImage from "../../assets/thinkingSunny.png";
+import heroImage from "../../assets/stressedWoman.png";
 import { ButtonComponent } from "~/components/ButtonComponent";
+
+const HERO_FLOAT_BADGES = [
+  {
+    label: "Burnout spotted",
+    dot: "green" as const,
+    motion: "hero-float-y",
+    position: "top-[2%] left-[-2%] z-10 sm:left-[-6%]",
+  },
+  {
+    label: "Stress mapped",
+    dot: "dark" as const,
+    motion: "hero-float-y--b",
+    position: "top-[20%] right-[-8%] z-10 sm:right-[-12%]",
+  },
+  {
+    label: "Fatigue",
+    dot: "dark" as const,
+    motion: "hero-float-y--c",
+    position: "top-[48%] left-[-4%] z-10 sm:left-[-20%]",
+  },
+  {
+    label: "Deadline crunch ",
+    dot: "dark" as const,
+    motion: "hero-float-y",
+    position: "bottom-[10%] left-[-3%] z-10 sm:left-[-8%]",
+  },
+  {
+    label: "Overwhelm",
+    dot: "green" as const,
+    motion: "hero-float-y--b",
+    position: "bottom-[26%] right-[-8%] z-10 sm:right-[-20%]",
+  },
+] as const;
+
+const FLOAT_PILL_CLASS =
+  "pointer-events-none absolute flex max-w-[calc(100%-1rem)] items-center gap-1.5 rounded-full border border-(--storia-black15) bg-(--storia-white)/90 px-2.5 py-1 shadow-[0_10px_28px_-6px_rgba(33,37,41,0.14)] backdrop-blur-sm sm:px-3";
 
 export const Hero = () => {
   return (
@@ -42,11 +78,30 @@ export const Hero = () => {
               </ButtonComponent>
             </div>
           </div>
-          <div className="mx-auto w-full max-w-[340px] lg:self-end lg:translate-x-12">
+          <div className="relative isolate mx-auto w-full max-w-[min(100%,380px)] overflow-visible pb-6 pt-2 lg:max-w-[400px] lg:self-end lg:translate-x-12">
+            {HERO_FLOAT_BADGES.map((badge) => (
+              <div
+                key={badge.label}
+                className={`${badge.motion} ${FLOAT_PILL_CLASS} ${badge.position}`}
+                aria-hidden
+              >
+                <span
+                  className={
+                    badge.dot === "green"
+                      ? "size-1.5 shrink-0 rounded-full bg-(--storia-green)"
+                      : "size-1.5 shrink-0 rounded-full bg-(--storia-black)"
+                  }
+                  aria-hidden
+                />
+                <span className="font-sans text-[9px] font-medium tracking-[0.11em] text-(--storia-black75) uppercase sm:text-[10px]">
+                  {badge.label}
+                </span>
+              </div>
+            ))}
             <img
               src={heroImage}
               alt="Character working at a desk with a laptop"
-              className="h-auto w-full object-contain"
+              className="relative z-0 h-auto w-full object-contain"
             />
           </div>
         </div>

@@ -3,6 +3,8 @@ import { useState } from "react";
 import testimonial1 from "../../assets/testimonial1.png";
 import testimonial2 from "../../assets/testimonial2.png";
 import testimonial3 from "../../assets/testimonial3.png";
+import cloud1 from "../../assets/cloud1.png";
+import cloud2 from "../../assets/cloud2.png";
 
 const slides = [
   {
@@ -49,17 +51,34 @@ export const Testimonials = () => {
       id="testimonials"
       className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] overflow-x-clip bg-(--storia-coffee-light)"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 left-0 z-0 h-[min(55vw,320px)] w-[min(55vw,320px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-(--storia-blue) opacity-40 blur-3xl"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute top-1/2 right-0 z-0 h-[min(50vw,300px)] w-[min(50vw,300px)] translate-x-1/2 -translate-y-1/2 rounded-full bg-(--storia-green) opacity-30 blur-3xl"
-      />
+      <div className="relative z-10 flex min-h-0 w-full flex-1 flex-col justify-center">
+        {/* Edge clouds — same vertical frame as content; left ≈ quote band, right lower (ref ss) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-[16%] left-[-52px] z-0 -translate-y-1/2"
+        >
+          <div className="relative inline-block -translate-x-1/2">
+            <img
+              src={cloud2}
+              alt=""
+              decoding="async"
+              className="relative z-0 block h-24 w-auto object-contain"
+            />
+          </div>
+        </div>
+        <div
+          aria-hidden
+          className="pointer-events-none absolute top-[90%] right-[-24px] z-0 flex -translate-y-1/2 justify-end"
+        >
+          <img
+            src={cloud1}
+            alt=""
+            decoding="async"
+            className="block h-22 w-auto translate-x-1/2 object-contain object-bottom"
+          />
+        </div>
 
-      <div className="relative z-1 flex min-h-0 w-full flex-1 flex-col justify-center">
-        <div className="section-inner w-full">
+        <div className="section-inner relative z-10 w-full">
           <div className="mx-auto flex w-full max-w-[720px] flex-col items-center text-center">
             <h2 className="font-[Fraunces,serif] text-[clamp(1.75rem,3.6vw,2.35rem)] leading-[1.2] font-semibold tracking-[-0.02em] text-(--storia-black)">
               What people are saying

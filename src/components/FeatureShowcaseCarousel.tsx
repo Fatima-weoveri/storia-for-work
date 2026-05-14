@@ -121,26 +121,13 @@ export const FeatureShowcaseCarousel = () => {
   const slideIndexRef = useRef(1);
   slideIndexRef.current = slideIndex;
 
-  const [autoAdvanceKey, setAutoAdvanceKey] = useState(0);
-
-  const bumpAutoAdvance = () => setAutoAdvanceKey((k) => k + 1);
-
   const goNext = () => {
     setSlideIndex((i) => Math.min(i + 1, EXTENDED_COUNT - 1));
-    bumpAutoAdvance();
   };
 
   const goPrev = () => {
     setSlideIndex((i) => Math.max(i - 1, 0));
-    bumpAutoAdvance();
   };
-
-  useEffect(() => {
-    const id = window.setInterval(() => {
-      setSlideIndex((i) => Math.min(i + 1, EXTENDED_COUNT - 1));
-    }, 2000);
-    return () => window.clearInterval(id);
-  }, [autoAdvanceKey]);
 
   useEffect(() => {
     if (!reduceMotion) return;

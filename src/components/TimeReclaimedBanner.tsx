@@ -14,10 +14,10 @@ export const TimeReclaimedBanner = () => {
         aria-hidden
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1100px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1100px] text-center">
         <h2
           id="time-reclaimed-heading"
-          className="max-w-[min(100%,920px)] text-[clamp(1.85rem,4.6vw,3.15rem)] leading-[1.08] font-medium tracking-[-0.02em] text-white"
+          className="mx-auto max-w-[min(100%,920px)] text-[clamp(1.85rem,4.6vw,3.15rem)] leading-[1.08] font-medium tracking-[-0.02em] text-white"
         >
           <em className="font-[Fraunces,serif] italic text-(--storia-green)">
             5+ hours
@@ -25,7 +25,7 @@ export const TimeReclaimedBanner = () => {
           reclaimed for deep work.
         </h2>
 
-        <p className="mt-6 max-w-[min(100%,660px)] text-[15px] leading-[1.65] text-white/75 md:text-[16px] md:leading-[1.7]">
+        <p className="mx-auto mt-6 max-w-[min(100%,660px)] text-[15px] leading-[1.65] text-white/75 md:text-[16px] md:leading-[1.7]">
           Attention does not only disappear in meetings—it leaks into inbox
           triage, context switching, and the low hum of always-on work tools.
           With Storia, some of that focus is reclaimed: short check-ins and

@@ -5,11 +5,10 @@ export const ToolsGapCallout = () => {
       className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] bg-(--storia-coffee-light)"
     >
       <div className="section-inner mx-auto w-full max-w-[600px] text-center">
-        <h2 className="text-[clamp(1.55rem,3.4vw,2.25rem)] leading-[1.2] tracking-[-0.02em] text-(--storia-black)">
-          <span className="inline-block whitespace-nowrap">
-            Monday doesn't map how stress shows up
-          </span>
-          <br />
+        <h2 className="text-balance text-[clamp(1.55rem,3.4vw,2.25rem)] leading-[1.2] tracking-[-0.02em] text-(--storia-black)">
+          Monday doesn't map how stress shows up
+          <span className="sm:hidden"> </span>
+          <br className="hidden sm:block" />
           across your quarter.
         </h2>
         <p className="mt-5 text-[clamp(1rem,2.1vw,1.125rem)] leading-[1.45] text-(--storia-black75)">

@@ -28,14 +28,14 @@ const SCATTERED_CONTEXT = [
     label: "Stress before hard calls",
     motion: "hero-float-y--b",
     position:
-      "top-[32%] left-0 max-w-[9.5rem] md:top-[36%] md:left-[0%] md:max-w-[200px]",
+      "top-[38%] left-0 max-w-[9.5rem] md:top-[36%] md:left-[0%] md:max-w-[200px]",
   },
   {
     emoji: "🔍",
     label: "Patterns buried across old entries",
     motion: "hero-float-y--b",
     position:
-      "top-[34%] right-0 max-w-[9.5rem] md:top-[38%] md:right-[0%] md:max-w-[220px]",
+      "top-[40%] right-0 max-w-[9.5rem] md:top-[38%] md:right-[0%] md:max-w-[220px]",
   },
   {
     emoji: "😮‍💨",
@@ -205,7 +205,7 @@ export const ContextEverywhere = () => {
   return (
     <section
       id="context"
-      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] mt-4 md:mt-8"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] mt-8 md:mt-8"
     >
       <div
         ref={stageRef}
@@ -238,7 +238,7 @@ export const ContextEverywhere = () => {
             <span className="context-hero-underline">everywhere.</span> Storia
             makes sense of it.
           </h2>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-14 md:mt-10 flex flex-wrap items-center justify-center gap-3">
             <span
               className={`text-[12px] transition-colors duration-300 ${
                 withStoria ? "text-(--storia-black50)" : "text-(--storia-black)"

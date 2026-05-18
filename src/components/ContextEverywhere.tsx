@@ -5,7 +5,8 @@ import {
   useState,
   type TransitionEvent,
 } from "react";
-import storiaIcon from "../../assets/icon.png";
+import sunnyHittingWall from "../../assets/sunnyHittingWall.gif";
+import sunnyWithGlasses from "../../assets/sunnyWithGlasses.gif";
 
 const SCATTERED_CONTEXT = [
   {
@@ -13,71 +14,46 @@ const SCATTERED_CONTEXT = [
     label: "Mental loops after meetings",
     motion: "hero-float-y",
     position:
-      "top-[1%] left-0 max-w-[9.25rem] md:top-[6%] md:left-[4%] md:max-w-[220px]",
-  },
-  {
-    emoji: "🔍",
-    label: "Patterns buried across old entries",
-    motion: "hero-float-y--b",
-    position:
-      "top-[11%] right-0 max-w-[9.25rem] md:top-[4%] md:left-1/2 md:right-auto md:max-w-[220px] md:-translate-x-1/2",
+      "top-[2%] left-0 max-w-[9.5rem] md:top-[2%] md:left-[6%] md:max-w-[200px]",
   },
   {
     emoji: "📉",
     label: "The week that drained you",
     motion: "hero-float-y--c",
     position:
-      "top-[1%] right-0 max-w-[9.25rem] md:top-[8%] md:right-[5%] md:max-w-[220px]",
+      "top-[2%] right-0 max-w-[9.5rem] md:top-[2%] md:right-[6%] md:max-w-[200px]",
   },
   {
     emoji: "💭",
     label: "Stress before hard calls",
     motion: "hero-float-y--b",
     position:
-      "top-[24%] left-0 max-w-[9.25rem] md:top-[38%] md:left-[3%] md:max-w-[220px]",
+      "top-[32%] left-0 max-w-[9.5rem] md:top-[36%] md:left-[0%] md:max-w-[200px]",
   },
   {
-    emoji: "⚡",
-    label: "Same stress, new week",
-    motion: "hero-float-y",
-    position:
-      "top-[28%] right-0 max-w-[9.25rem] md:top-[42%] md:right-[4%] md:max-w-[220px]",
-  },
-  {
-    emoji: "🌿",
-    label: "Progress you didn't name",
-    motion: "hero-float-y--c",
-    position:
-      "bottom-[34%] left-0 max-w-[9.25rem] md:bottom-[28%] md:left-[8%] md:max-w-[220px]",
-  },
-  {
-    emoji: "🎯",
-    label: "Decisions still sitting unresolved",
+    emoji: "🔍",
+    label: "Patterns buried across old entries",
     motion: "hero-float-y--b",
     position:
-      "bottom-[20%] left-0 max-w-[10.5rem] md:bottom-[16%] md:left-[32%] md:max-w-[220px]",
+      "top-[34%] right-0 max-w-[9.5rem] md:top-[38%] md:right-[0%] md:max-w-[220px]",
   },
   {
     emoji: "😮‍💨",
     label: "Energy dips, unexplained",
     motion: "hero-float-y",
     position:
-      "bottom-[12%] right-0 max-w-[9.25rem] md:bottom-[12%] md:right-[24%] md:max-w-[220px]",
-  },
-  {
-    emoji: "📝",
-    label: "Notes you never revisited",
-    motion: "hero-float-y--c",
-    position:
-      "bottom-[34%] right-0 max-w-[9.25rem] md:bottom-[28%] md:right-0 md:max-w-[220px]",
+      "top-[-10%] left-1/2 max-w-[9.5rem] -translate-x-1/2 md:top-[-12%] md:max-w-[200px]",
   },
 ] as const;
 
 const FLOAT_CHIP_CLASS =
   "context-chip pointer-events-none absolute flex max-w-[min(100%,220px)] items-center gap-1.5 text-left will-change-transform max-md:gap-1";
 
-const GATHER_MS = 780;
-const STAGGER_MS = 45;
+const GATHER_MS = 2200;
+const GATHER_STAGGER_MS = 100;
+const SPREAD_MS = 780;
+const SPREAD_STAGGER_MS = 45;
+const GATHER_EASE = "cubic-bezier(0.22, 1, 0.36, 1)";
 
 const prefersReducedMotion = () =>
   typeof window !== "undefined" &&
@@ -120,7 +96,10 @@ export const ContextEverywhere = () => {
       const chipY = chipRect.top + chipRect.height / 2 - stageRect.top;
       const dx = targetX - chipX;
       const dy = targetY - chipY;
-      const delay = `${index * STAGGER_MS}ms`;
+      const durationMs = gather ? GATHER_MS : SPREAD_MS;
+      const staggerMs = gather ? GATHER_STAGGER_MS : SPREAD_STAGGER_MS;
+      const delay = `${index * staggerMs}ms`;
+      const ease = gather ? GATHER_EASE : "cubic-bezier(0.33, 1, 0.68, 1)";
 
       chip.classList.add("context-chip--animating");
 
@@ -132,7 +111,7 @@ export const ContextEverywhere = () => {
 
         void chip.offsetWidth;
 
-        chip.style.transition = `transform ${GATHER_MS}ms cubic-bezier(0.33, 1, 0.68, 1) ${delay}, opacity ${GATHER_MS * 0.55}ms ease ${Number.parseInt(delay, 10) + GATHER_MS * 0.35}ms`;
+        chip.style.transition = `transform ${durationMs}ms ${ease} ${delay}, opacity ${durationMs * 0.55}ms ease ${Number.parseInt(delay, 10) + durationMs * 0.4}ms`;
         chip.style.transform = `translate(${dx}px, ${dy}px) scale(0.72)`;
         chip.style.opacity = "0";
       } else {
@@ -143,7 +122,7 @@ export const ContextEverywhere = () => {
 
         void chip.offsetWidth;
 
-        chip.style.transition = `transform ${GATHER_MS}ms cubic-bezier(0.33, 1, 0.68, 1) ${delay}, opacity ${GATHER_MS * 0.45}ms ease ${delay}`;
+        chip.style.transition = `transform ${durationMs}ms ${ease} ${delay}, opacity ${durationMs * 0.45}ms ease ${delay}`;
         chip.style.transform = "translate(0, 0) scale(1)";
         chip.style.opacity = "1";
       }
@@ -192,7 +171,7 @@ export const ContextEverywhere = () => {
               animatingRef.current = false;
               setIsAnimating(false);
             },
-            GATHER_MS + SCATTERED_CONTEXT.length * STAGGER_MS,
+            GATHER_MS + SCATTERED_CONTEXT.length * GATHER_STAGGER_MS,
           );
         });
       });
@@ -210,7 +189,7 @@ export const ContextEverywhere = () => {
             animatingRef.current = false;
             setIsAnimating(false);
           },
-          GATHER_MS + SCATTERED_CONTEXT.length * STAGGER_MS,
+          SPREAD_MS + SCATTERED_CONTEXT.length * SPREAD_STAGGER_MS,
         );
       });
     });
@@ -226,11 +205,11 @@ export const ContextEverywhere = () => {
   return (
     <section
       id="context"
-      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)]"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-2rem)] mt-4 md:mt-8"
     >
       <div
         ref={stageRef}
-        className="section-inner relative mx-auto flex min-h-[min(760px,calc(100dvh-var(--site-header-height)-4rem))] max-w-[920px] flex-col items-center justify-center px-3 text-center md:min-h-[min(680px,calc(100dvh-var(--site-header-height)-4rem))] md:px-2"
+        className="section-inner relative mx-auto flex max-w-[920px] flex-col items-center justify-center px-3 text-center md:px-2"
       >
         {SCATTERED_CONTEXT.map((item, index) => (
           <div
@@ -254,16 +233,11 @@ export const ContextEverywhere = () => {
         ))}
 
         <div className="relative z-10 mx-auto flex w-full max-w-[min(100%,280px)] flex-col items-center md:max-w-[640px]">
-          <p className="mt-3 font-[Fraunces,serif] text-[15px] tracking-[-0.01em] text-(--storia-black) md:text-[16px]">
-            Storia for Work
-          </p>
-
           <h2 className="context-hero-headline mt-8 text-balance text-[clamp(1.35rem,3.8vw,2.05rem)] leading-[1.4] tracking-[0.02em] text-(--storia-black) uppercase">
-            Your context is{" "}
-            <span className="context-hero-underline">everywhere</span> (and
-            nowhere) but it doesn&apos;t need to be.
+            Your mind is{" "}
+            <span className="context-hero-underline">everywhere.</span> Storia
+            makes sense of it.
           </h2>
-
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <span
               className={`text-[12px] transition-colors duration-300 ${
@@ -298,14 +272,7 @@ export const ContextEverywhere = () => {
               with Storia
             </span>
           </div>
-
-          <div
-            className={`mt-10 flex flex-col items-center ${
-              digestVisible ? "context-digest-enter" : "opacity-0"
-            }`}
-            aria-hidden={!digestVisible}
-          >
-            <div
+          {/* <div
               ref={digestRef}
               className="flex size-11 items-center justify-center rounded-[10px] bg-(--storia-green)"
             >
@@ -314,9 +281,26 @@ export const ContextEverywhere = () => {
                 alt=""
                 className="h-6 w-6 object-contain brightness-0 invert"
               />
+            </div> */}
+          <div className="mt-10 flex flex-col items-center">
+            <div ref={digestRef} className="flex justify-center">
+              <img
+                src={withStoria ? sunnyWithGlasses : sunnyHittingWall}
+                alt={
+                  withStoria
+                    ? "Sunny with glasses, your mind connected"
+                    : "Sunny hitting a wall, mind scattered"
+                }
+                className="h-24 w-auto object-contain sm:h-28"
+              />
             </div>
-            <p className="mt-3 text-[12px] text-(--storia-black50)">
-              2,918 pieces of work context, digested
+            <p
+              className={`mt-3 text-[12px] text-(--storia-black50) transition-opacity duration-500 ${
+                digestVisible ? "context-digest-enter opacity-100" : "opacity-0"
+              }`}
+              aria-hidden={!digestVisible}
+            >
+              3,234 pieces of your mind connected
             </p>
           </div>
         </div>

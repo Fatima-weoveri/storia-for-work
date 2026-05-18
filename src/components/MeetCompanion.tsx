@@ -4,7 +4,7 @@ export const MeetCompanion = () => {
   return (
     <section
       id="meet-the-agent"
-      className="section-shell scroll-mt-[calc(var(--site-header-height)+2rem)]"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)+2rem)] bg-(--storia-coffee-light)"
     >
       <div className="section-inner">
         <div className="mx-auto w-full max-w-[700px]">

@@ -168,7 +168,7 @@ export const FeatureShowcaseCarousel = () => {
   return (
     <section
       id="how-it-works"
-      className="section-shell scroll-mt-[calc(var(--site-header-height)-1rem)] bg-(--storia-coffee-light)"
+      className="section-shell scroll-mt-[calc(var(--site-header-height)-1rem)]"
       aria-label="App features"
     >
       <div className="section-inner">
